@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const ejs = require('ejs');
@@ -9,8 +10,8 @@ const mail = nodemailer.createTransport({
     host: 'smtp.ethereal.email',
     port: 587,
     auth: {
-        user: 'zkhvc42u5xqpgh2b@ethereal.email',
-        pass: '8K7QqQCcSmbRVHx9Kk'
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS
     }
 });
 
@@ -27,7 +28,7 @@ app.post('/sendmail', (req, res) => {
     console.log(req.body);
     const msg = {
         from: req.body.mail,
-        to: 'yama3ki.tada4@gmail.com',
+        to: 'yama0123@mail.com',
         subject: 'mail send test from nodejs',
         text: req.body.body
     };
